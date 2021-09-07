@@ -13,7 +13,7 @@ const main = () => {
     const inputArrayNumbers = [];
     const arrayFoundNumbers = [];
     let score = 0;
-    let log = "Hai indovinato i seguenti numeri:";
+    let log = "";
 
     while (arrayNumbers.length < howManyNumbers) {
         arrayNumbers.push(Math.floor((Math.random() * rangeOfNumber) + 1));
@@ -36,10 +36,13 @@ const main = () => {
 
             if (inputArrayNumbers[i] === arrayNumbers[i]) {
                 score++;
-                log += " " + arrayNumbers[i] + ",";
+                arrayFoundNumbers.push(arrayNumbers[i]);
             }
         }
-        log = log.slice(0, -1);
+        if (arrayFoundNumbers.length > 0) {
+            log += "Hai trovato i seguenti numeri: ";
+            log += arrayFoundNumbers;
+        }
         log += "\nPunteggio totale: " + score;
 
         alert(log);
